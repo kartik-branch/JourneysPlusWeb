@@ -11,6 +11,24 @@
     console.log(err, data);
   }); 
     branch.setIdentity('123456');
+    var event_and_custom_data = {
+   "transaction_id": "tras_Id_1232343434",
+   "currency": "USD",
+   "revenue": 180.2,
+   "shipping": 10.5,
+   "tax": 13.5,
+   "coupon": "promo-1234",
+   "affiliation": "high_fi",
+   "description": "Preferred purchase",
+   "purchase_loc": "Palo Alto",
+   "store_pickup": "unavailable"
+  };
+
+branch.logEvent(
+   "PURCHASE",
+   event_and_custom_data,
+   function(err) { console.log(err); }
+);
   </script>
 </head>
 <body>
