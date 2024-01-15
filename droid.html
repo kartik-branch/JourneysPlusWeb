@@ -14,6 +14,7 @@
          // init Branch
          branch.init('key_live_aaUQWpVTUkQ78jigB8CZEhplCEbpSesw');
     const customer_event_alias = "MOVIES_ADD_TO_CART"
+    const content_items = []
 const event_and_custom_data = {
         content_ids : '',
         content_type: '',
@@ -31,8 +32,9 @@ const event_and_custom_data = {
 branch.logEvent(
     "PURCHASE",
     event_and_custom_data,
+  content_items,
     customer_event_alias
-)
+);
       </script>  
 </head>
 <body>
