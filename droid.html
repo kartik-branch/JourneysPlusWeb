@@ -8,7 +8,7 @@
   <p></p>
   <a href="https://jiomart.app.link/43XoAVwdiDb">Branch link</a>
   <p></p>
-   <p id="referrer">Initial Referrer: </p>
+  <p id="referrer"></p>
   <script>
          // load Branch
          (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking qrCode".split(" "), 0);
@@ -36,9 +36,35 @@ branch.logEvent(
   content_items,
     customer_event_alias
 );
-    const referrer = document.referrer || "No referrer";
-    document.getElementById('referrer').textContent += referrer;
-      </script>  
+    var utils = {};
+     utils.isIframe = function() {
+            return window.self !== window.top;
+        };
+    utils.isSameOriginFrame = function() {
+            try {
+                return window.top.location.hostname === window.location.hostname;
+            } catch (e) {
+                return false;
+            }
+        };
+
+        utils.getInitialReferrer = function(referringLink) {
+            if (referringLink) {
+                return referringLink;
+            }
+            if (utils.isIframe()) {
+                return utils.isSameOriginFrame() ? window.top.document.referrer : "";
+            }
+            return document.referrer;
+        };
+
+        // Use the utils function to get the referrer
+        var referringLink = ""; // Or provide any link if you want
+        var initialReferrer = utils.getInitialReferrer(referringLink);
+
+        // Output the referrer to the page
+        document.getElementById('referrer').innerText = initialReferrer ? initialReferrer : "No referrer";
+    </script>
 </head>
 <body>
   <h1> Droid Testing </h1>
