@@ -52,9 +52,8 @@ const event_and_custom_data = {
       const url = new URL(window.location.href);
       url.searchParams.set('buy', 'true'); // Add or update the "buy" query param
       window.history.pushState({}, '', url); // Update the URL without reloading
+      branch.track('pageview');
     }
-  branch.track('pageview');
-    
   </script>
 </body>
 </html>
