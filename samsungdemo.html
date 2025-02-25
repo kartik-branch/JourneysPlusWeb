@@ -31,6 +31,24 @@ branch.logEvent(
   content_items,
     customer_event_alias
 );
+
+    var linkData = {
+  campaign: 'content 123',
+  channel: 'facebook',
+  feature: 'dashboard',
+  tags: [ 'tag1', 'tag2', 'tag3' ],
+  alias: '',
+  data: {
+    'custom_string': 'hello',
+    '$og_title': 'Title',
+    '$android_url':'https://stackoverflow.com/'
+  }
+};
+
+branch.link(linkData, function(err, link) {
+  console.log(link);
+});
+    
     var utils = {};
      utils.isIframe = function() {
             return window.self !== window.top;
